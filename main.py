@@ -29,4 +29,5 @@ def get_vacancies(query_list: list):
     with open("vacancies.json", "w", encoding="utf-8") as outfile:
         outfile.write(json_object)
 
+
 get_vacancies(['Python', 'Django', 'Flask'])
