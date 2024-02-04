@@ -19,12 +19,12 @@ def get_vacancies(query_list: list):
         if salary_tag is not None:
             salary = " ". join(salary_tag.text.split('\u202f'))
         else:
-            salary = "зарплата не указана"
+            salary = "salary not specified"
         company_tag = tag.find(class_="bloko-v-spacing-container bloko-v-spacing-container_base-2")
         company = " ".join(company_tag.text.split('\xa0'))
         city_tag = tag.find_all(class_="bloko-text")
         city = " ".join(city_tag[1].text.split('\xa0'))
-        vacancies.setdefault(title, {'Зарплата': salary, 'Компания': company, 'Город': city})
+        vacancies.setdefault(title, {'Salary': salary, 'Company': company, 'City': city})
     json_object = json.dumps(vacancies, indent=4, ensure_ascii=False)
     with open("vacancies.json", "w", encoding="utf-8") as outfile:
         outfile.write(json_object)
