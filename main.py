@@ -2,8 +2,6 @@ import bs4
 import fake_headers
 import requests
 import json
-import re
-
 
 
 def get_vacancies(query_list: list):
