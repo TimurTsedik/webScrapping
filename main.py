@@ -5,6 +5,15 @@ import json
 
 
 def get_vacancies(query_list: list):
+    """
+    Retrieves vacancies based on the provided query list and saves the data to a JSON file.
+
+    Args:
+        query_list (list): A list of strings representing the search query.
+
+    Returns:
+        None
+    """
     vacancies = {}
     query = "+".join(query_list)
     url = f'https://spb.hh.ru/search/vacancy?text={query}&area=1&area=2'
