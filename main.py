@@ -24,6 +24,7 @@ def get_vacancies(query_list: list):
     vacancy_tags = vacancies_list_tag.find_all(class_="vacancy-serp-item-body")
     for tag in vacancy_tags:
         title = tag.find(class_="bloko-header-section-3").text
+        link = tag.find(class_="bloko-link").attrs['href']
         salary_tag = tag.find(class_="bloko-header-section-2")
         if salary_tag is not None:
             salary = " ". join(salary_tag.text.split('\u202f'))
@@ -33,7 +34,7 @@ def get_vacancies(query_list: list):
         company = " ".join(company_tag.text.split('\xa0'))
         city_tag = tag.find_all(class_="bloko-text")
         city = " ".join(city_tag[1].text.split('\xa0'))
-        vacancies.setdefault(title, {'Salary': salary, 'Company': company, 'City': city})
+        vacancies.setdefault(title, {'Link': link, 'Salary': salary, 'Company': company, 'City': city})
     json_object = json.dumps(vacancies, indent=4, ensure_ascii=False)
     with open("vacancies.json", "w", encoding="utf-8") as outfile:
         outfile.write(json_object)
