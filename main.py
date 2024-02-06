@@ -25,6 +25,7 @@ def get_vacancies(query_list: list):
     for tag in vacancy_tags:
         title = tag.find(class_="bloko-header-section-3").text
         link = tag.find(class_="bloko-link").attrs['href']
+        link = link[0:link.find("?")]
         salary_tag = tag.find(class_="bloko-header-section-2")
         if salary_tag is not None:
             salary = " ". join(salary_tag.text.split('\u202f'))
